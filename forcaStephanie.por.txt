@@ -1,0 +1,163 @@
+﻿programa {
+
+
+  inclua biblioteca Util --> u
+  inclua biblioteca Texto --> tx
+  
+  
+  funcao inicio() {
+    caracter letra
+    cadeia palavra[5] = {"oriundo", "espanha", "refutar", "holandes", "audacia"}
+    cadeia palavra_sorteada
+    caracter palavranova[50], formacao[50]
+    logico acertou, ganhou
+    inteiro erros = 0, quantPalavra, i, chances = 0, sorteio
+   
+
+
+    sorteio = u.sorteia(0,4)
+
+
+    palavra_sorteada = palavra[sorteio]
+
+
+    quantPalavra = tx.numero_caracteres(palavra_sorteada)
+
+
+    para (inteiro indice = 0; indice < quantPalavra; indice++){
+                   palavranova[indice] = tx.obter_caracter(palavra_sorteada, indice)
+    }
+
+
+    para(i = 0; i < quantPalavra; i ++){
+          formacao[i] = '♥'
+    }
+   
+
+
+   
+    enquanto (chances < quantPalavra){
+    acertou = falso
+    ganhou = verdadeiro
+
+
+    
+    escolha (erros){
+    caso 0:
+    escreva("________   \n")
+    escreva("|       |  \n")
+    escreva("|          \n")
+    escreva("|          \n")
+    escreva("|          \n")
+    escreva("|          \n")
+    pare
+
+
+    caso 1:
+    escreva("_________     \n")
+    escreva("|        |    \n")
+    escreva("|      (•.•)  \n")
+    escreva("|             \n")
+    escreva("|             \n")
+    escreva("|             \n")
+    escreva("|             \n")
+    pare
+
+
+    caso 2:
+    escreva("_________     \n")
+    escreva("|        |    \n")
+    escreva("|      (•.•)  \n")
+    escreva("|       | |   \n")
+    escreva("|       |.|   \n")
+    escreva("|             \n")
+    escreva("|             \n")
+    pare
+
+
+    caso 3:
+    escreva("________     \n")
+    escreva("|       |    \n")
+    escreva("|     (•.•)  \n")
+    escreva("|     /| |   \n")
+    escreva("|      |.|   \n")
+    escreva("|            \n")
+    escreva("|            \n")
+    pare
+
+
+    caso 4:
+    escreva("________     \n")
+    escreva("|       |    \n")
+    escreva("|     (•.•)  \n")
+    escreva("|     /| |\\ \n")
+    escreva("|      |.|   \n")
+    escreva("|            \n")
+    escreva("|            \n")
+    pare
+
+
+    caso 5:
+    escreva("________     \n")
+    escreva("|       |    \n")
+    escreva("|     (•.•)  \n")
+    escreva("|     /| |\\ \n")
+    escreva("|      |.|   \n")
+    escreva("|     /      \n")
+    escreva("|            \n")
+    pare
+    
+    caso 6:
+    escreva("________      \n")
+    escreva("|       |     \n")
+    escreva("|     (•.•)   \n")
+    escreva("|     /| |\\  \n")
+    escreva("|      |.|    \n")
+    escreva("|     /   \\  \n")
+    escreva("|             \n")
+    pare
+    }
+    
+    para(i = 0; i < quantPalavra; i++){
+    escreva(formacao[i])
+    }
+    
+    
+    escreva("\nDigite a letra (somente letras minúsculas): ")
+    leia(letra)
+   
+    
+    para(i = 0; i < quantPalavra; i++){
+    se(palavranova[i] == letra){
+           formacao[i] = letra
+            acertou = verdadeiro
+      }
+    }
+        
+        
+    se(acertou == falso){
+           erros = erros + 1
+    }
+         
+         
+    para(i = 0; i < quantPalavra; i++){
+    se(palavranova[i] != letra){
+            ganhou = falso
+       }
+     }
+      
+       
+     se(chances == 7 e acertou == verdadeiro){
+                escreva("Você ganhou!\n")
+     }
+          
+       
+     se(erros <= 5         e acertou == falso){
+                escreva("Você perdeu!\n")
+     }
+         
+           chances = chances + 1
+    
+    }
+  }
+}
